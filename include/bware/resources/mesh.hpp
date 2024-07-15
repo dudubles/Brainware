@@ -1,11 +1,9 @@
 // Copyright (c) 2024 dudubles
 
-#pragma once
-
-#include "bware/core.hpp"
-
 #ifndef BWARE_RESOURCES_MESH_H_
 #define BWARE_RESOURCES_MESH_H_
+
+#include "bware/core.hpp"
 
 namespace brainware {
 

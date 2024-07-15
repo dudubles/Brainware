@@ -1,11 +1,9 @@
 // Copyright (c) 2024 dudubles
 
-#pragma once
-
-#include <vector>
-
 #ifndef BWARE_CORE_H_
 #define BWARE_CORE_H_
+
+#include <vector>
 
 namespace brainware {
 
