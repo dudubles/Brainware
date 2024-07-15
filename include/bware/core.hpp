@@ -4,7 +4,8 @@
 
 #include <vector>
 
-#ifndef BWARE_CORE
+#ifndef BWARE_CORE_H_
+#define BWARE_CORE_H_
 
 namespace brainware {
 
@@ -41,4 +42,4 @@ public:
 
 } // namespace brainware
 
-#endif // !BWARE_CORE
+#endif // !BWARE_CORE_H_

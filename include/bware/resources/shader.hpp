@@ -4,7 +4,8 @@
 
 #include "bware/core.hpp"
 
-#ifndef BWARE_SHADER
+#ifndef BWARE_RESOURCES_SHADER_H_
+#define BWARE_RESOURCES_SHADER_H_
 
 namespace brainware {
 
@@ -17,4 +18,4 @@ public:
 
 } // namespace brainware
 
-#endif // !BWARE_SHADER
+#endif // !BWARE_RESOURCES_SHADER_H_

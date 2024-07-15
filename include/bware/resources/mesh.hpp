@@ -4,7 +4,8 @@
 
 #include "bware/core.hpp"
 
-#ifndef BWARE_MESH
+#ifndef BWARE_RESOURCES_MESH_H_
+#define BWARE_RESOURCES_MESH_H_
 
 namespace brainware {
 
@@ -20,4 +21,4 @@ private:
 
 } // namespace brainware
 
-#endif // !BWARE_MESH
+#endif // !BWARE_RESOURCES_MESH_H_
