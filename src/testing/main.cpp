@@ -1,3 +1,4 @@
+#include "bware/resources/shader.hpp"
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
@@ -5,8 +6,8 @@
 
 int main() {
   glfwInit();
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
   GLFWwindow *window = glfwCreateWindow(1280, 720, "Brainware", NULL, NULL);
@@ -23,6 +24,10 @@ int main() {
   }
 
   glViewport(0, 0, 1280, 720);
+
+  brainware::Shader *myshader = new brainware::Shader(
+      "C:/Users/tiago/Desktop/Brainware/resource/shaders/vertex.glsl",
+      "C:/Users/tiago/Desktop/Brainware/resource/shaders/fragment.glsl");
 
   while (!glfwWindowShouldClose(window)) {
     glfwSwapBuffers(window);

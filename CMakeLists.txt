@@ -12,6 +12,10 @@ set(${BWARE_TESTING} TRUE)
 
 add_library(${PROJECT_NAME} STATIC
 
+  ${PROJECT_SOURCE_DIR}/src/core.cpp
+  ${PROJECT_SOURCE_DIR}/src/resources/shader.cpp
+  ${PROJECT_SOURCE_DIR}/src/resources/mesh.cpp
+
   ${PROJECT_SOURCE_DIR}/src/glad.c # This could be a separate lib but for now its ok
 
 )
@@ -32,7 +36,7 @@ target_link_libraries(${PROJECT_NAME}
 
 add_executable(test${PROJECT_NAME}
 
-  ${PROJECT_SOURCE_DIR}/src/test.cpp
+  ${PROJECT_SOURCE_DIR}/src/testing/main.cpp
 
 )
 
