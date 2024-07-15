@@ -51,11 +51,6 @@ int main() {
 
     ImGui::Begin("Resource Inspector");
     ImGui::Text("Resources:");
-    for (const auto &resource : brainware::Resource::resource_list_) {
-      if (resource->type_ == 0) {
-        ImGui::Text(" - Shader");
-      }
-    }
     ImGui::End();
 
     ImGui::Render();

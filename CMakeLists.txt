@@ -6,7 +6,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
 
 project("bware")
 
-set(${BWARE_TESTING} TRUE)
+set(BWARE_TESTING ON)
 
 # =================================== BRAINWARE STATIC LIBRARY ====================================
 
@@ -43,6 +43,8 @@ target_link_libraries(${PROJECT_NAME}
 
 # ======================================= BRAINWARE TESTING =======================================
 
+if (BWARE_TESTING)
+
 add_executable(test${PROJECT_NAME}
 
   ${PROJECT_SOURCE_DIR}/src/testing/main.cpp
@@ -61,5 +63,7 @@ target_link_libraries(test${PROJECT_NAME}
   ${PROJECT_SOURCE_DIR}/build/libbware.a
 
 )
+
+endif()
 
 # =================================================================================================
