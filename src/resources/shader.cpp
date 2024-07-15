@@ -7,7 +7,9 @@
 #include <iostream>
 #include <sstream>
 
-brainware::Shader::Shader(const char *vertex_path, const char *fragment_path) {
+namespace brainware {
+
+Shader::Shader(const char *vertex_path, const char *fragment_path) {
   std::cout << "[BRAINWARE] [DEBUG] Creating new shader...\n";
 
   std::string vertex_code;
@@ -89,4 +91,8 @@ brainware::Shader::Shader(const char *vertex_path, const char *fragment_path) {
 
   glDeleteShader(vertex_id);
   glDeleteShader(fragment_id);
+
+  this->type_ = BRAINWARE_RESOURCE_SHADER;
 }
+
+} // namespace brainware

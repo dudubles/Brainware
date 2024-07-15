@@ -16,10 +16,11 @@ public:
   Resource();
   ~Resource();
 
+  static std::vector<Resource *>
+      resource_list_; // Its in public for testing, but it should be private
   unsigned int type_;
 
 private:
-  static std::vector<Resource *> resource_list_;
 };
 
 } // namespace brainware

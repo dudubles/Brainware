@@ -1,11 +1,13 @@
 #include <algorithm>
 #include <bware/core.hpp>
 
-std::vector<brainware::Resource *> brainware::Resource::resource_list_;
+namespace brainware {
 
-brainware::Resource::Resource() { this->resource_list_.push_back(this); }
+std::vector<Resource *> Resource::resource_list_;
 
-brainware::Resource::~Resource() {
+Resource::Resource() { resource_list_.push_back(this); }
+
+Resource::~Resource() {
 
   auto resource_pos =
       std::find(resource_list_.begin(), resource_list_.end(), this);
@@ -14,3 +16,5 @@ brainware::Resource::~Resource() {
     resource_list_.erase(resource_pos);
   }
 }
+
+} // namespace brainware

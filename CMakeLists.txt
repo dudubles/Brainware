@@ -16,13 +16,22 @@ add_library(${PROJECT_NAME} STATIC
   ${PROJECT_SOURCE_DIR}/src/resources/shader.cpp
   ${PROJECT_SOURCE_DIR}/src/resources/mesh.cpp
 
-  ${PROJECT_SOURCE_DIR}/src/glad.c # This could be a separate lib but for now its ok
+  # Dear ImGui
+  ${PROJECT_SOURCE_DIR}/src/imgui/imgui.cpp
+  ${PROJECT_SOURCE_DIR}/src/imgui/imgui_demo.cpp
+  ${PROJECT_SOURCE_DIR}/src/imgui/imgui_draw.cpp
+  ${PROJECT_SOURCE_DIR}/src/imgui/imgui_impl_glfw.cpp
+  ${PROJECT_SOURCE_DIR}/src/imgui/imgui_impl_opengl3.cpp
+  ${PROJECT_SOURCE_DIR}/src/imgui/imgui_tables.cpp
+  ${PROJECT_SOURCE_DIR}/src/imgui/imgui_widgets.cpp
 
+  ${PROJECT_SOURCE_DIR}/src/glad.c
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC
 
   ${PROJECT_SOURCE_DIR}/include/
+  ${PROJECT_SOURCE_DIR}/include/imgui/
 
 )
 
