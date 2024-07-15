@@ -37,7 +37,8 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 
 target_link_libraries(${PROJECT_NAME}
 
-  ${PROJECT_SOURCE_DIR}/lib/libglfw3.a 
+  ${PROJECT_SOURCE_DIR}/lib/libglfw3.a
+  ${PROJECT_SOURCE_DIR}/lib/libassimp.a
 
 )
 
