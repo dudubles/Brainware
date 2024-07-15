@@ -1,11 +1,19 @@
+// Copyright (c) 2024 dudubles
+
+// Title  : shader.cpp
+// Author : @Dudubles
+// Date   : 07/15/24
+
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
-#include <bware/core.hpp>
-#include <bware/resources/shader.hpp>
-#include <fstream>
 #include <glad/glad.h>
+
+#include <fstream>
 #include <iostream>
 #include <sstream>
+
+#include <bware/core.hpp>
+#include <bware/resources/shader.hpp>
 
 namespace brainware {
 

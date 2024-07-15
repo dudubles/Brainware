@@ -1,5 +1,9 @@
 // Copyright (c) 2024 dudubles
 
+// Title  : shader.hpp
+// Author : @Dudubles
+// Date   : 07/15/24
+
 #ifndef BWARE_RESOURCES_SHADER_H_
 #define BWARE_RESOURCES_SHADER_H_
 

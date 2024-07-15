@@ -1,4 +1,11 @@
+// Copyright (c) 2024 dudubles
+
+// Title  : core.cpp
+// Author : @Dudubles
+// Date   : 07/15/24
+
 #include <algorithm>
+
 #include <bware/core.hpp>
 
 namespace brainware {

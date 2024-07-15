@@ -1,5 +1,9 @@
 // Copyright (c) 2024 dudubles
 
+// Title  : core.hpp
+// Author : @Dudubles
+// Date   : 07/15/24
+
 #ifndef BWARE_CORE_H_
 #define BWARE_CORE_H_
 
