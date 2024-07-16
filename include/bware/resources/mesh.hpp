@@ -10,7 +10,8 @@
 #include "glm/ext/vector_float3.hpp"
 #include <glm/glm.hpp>
 
-#include <bware/core.hpp>
+#include <bware/base.hpp>
+
 #include <vector>
 
 namespace brainware {

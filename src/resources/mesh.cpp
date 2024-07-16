@@ -13,9 +13,7 @@
 #include <assimp/postprocess.h>
 #include <assimp/scene.h>
 
-#include <iostream>
-
-#include <bware/core.hpp>
+#include <bware/base.hpp>
 #include <bware/resources/mesh.hpp>
 
 namespace brainware {

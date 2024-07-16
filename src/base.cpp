@@ -6,7 +6,7 @@
 
 #include <algorithm>
 
-#include <bware/core.hpp>
+#include <bware/base.hpp>
 
 namespace brainware {
 

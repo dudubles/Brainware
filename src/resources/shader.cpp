@@ -12,7 +12,7 @@
 #include <iostream>
 #include <sstream>
 
-#include <bware/core.hpp>
+#include <bware/base.hpp>
 #include <bware/resources/shader.hpp>
 
 namespace brainware {
