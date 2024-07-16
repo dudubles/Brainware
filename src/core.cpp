@@ -12,7 +12,10 @@ namespace brainware {
 
 std::vector<Resource *> Resource::resource_list_;
 
-Resource::Resource() { resource_list_.push_back(this); }
+Resource::Resource() {
+  type_ = ResourceType::kCustomResource; // Custom by default
+  resource_list_.push_back(this);
+}
 
 Resource::~Resource() {
 

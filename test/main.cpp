@@ -41,7 +41,7 @@ int main() {
   ImGui_ImplGlfw_InitForOpenGL(window, true);
   ImGui_ImplOpenGL3_Init("#version 460");
 
-  brainware::Shader *myshader = new brainware::Shader(
+  brainware::Shader myshader(
       "C:/Users/tiago/Desktop/Brainware/resource/shaders/vertex.glsl",
       "C:/Users/tiago/Desktop/Brainware/resource/shaders/fragment.glsl");
 

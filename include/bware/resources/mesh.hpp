@@ -15,9 +15,8 @@
 
 namespace brainware {
 
-class Vertex {
+struct Vertex {
   glm::vec3 position_;
-  glm::vec3 normal_;
   glm::vec2 tex_coords_;
 };
 
@@ -25,13 +24,16 @@ class Mesh : Resource {
 public:
   Mesh();
 
+  unsigned int vao_;
+
   std::vector<Vertex> vertices_;
   std::vector<unsigned int> indices_;
+
+  void SetupGL();
 
 private:
   unsigned int vbo_;
   unsigned int ebo_;
-  unsigned int vao_;
 };
 
 } // namespace brainware

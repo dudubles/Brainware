@@ -11,28 +11,39 @@
 
 namespace brainware {
 
-#define BRAINWARE_RESOURCE_SHADER 0; // resources/shader.hpp
-#define BRAINWARE_RESOURCE_MESH 1;   // resources/mesh.hpp
+enum ResourceType {
+  kCustomResource,
+  kShaderResource, // resources/shader.hpp
+  kMeshResource,   // resources/mesh.hpp
+};
 
 class Resource {
 public:
   Resource();
   ~Resource();
 
-  unsigned int type_;
+  ResourceType type_;
 
 private:
   static std::vector<Resource *> resource_list_;
 };
 
+enum ComponentType {
+  kCustomComponent,
+};
+
 class Component {
 public:
-  unsigned int type_;
+  ComponentType type_;
+};
+
+enum GameObjectType {
+  kCustomGameObject,
 };
 
 class GameObject {
 public:
-  unsigned int type_;
+  GameObjectType type_;
 
   GameObject *parent_;
 
