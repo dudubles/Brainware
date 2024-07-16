@@ -7,13 +7,26 @@
 #ifndef BWARE_RESOURCES_MESH_H_
 #define BWARE_RESOURCES_MESH_H_
 
+#include "glm/ext/vector_float3.hpp"
+#include <glm/glm.hpp>
+
 #include <bware/core.hpp>
+#include <vector>
 
 namespace brainware {
+
+class Vertex {
+  glm::vec3 position_;
+  glm::vec3 normal_;
+  glm::vec2 tex_coords_;
+};
 
 class Mesh : Resource {
 public:
   Mesh();
+
+  std::vector<Vertex> vertices_;
+  std::vector<unsigned int> indices_;
 
 private:
   unsigned int vbo_;

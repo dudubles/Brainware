@@ -1,66 +1,74 @@
+# CMAKE file for brainware engine compilation
+message("======================= BRAINWARE COMPILATION =======================")
+
 cmake_minimum_required(VERSION 3.28)
 
 set(CMAKE_C_COMPILER x86_64-w64-mingw32-gcc)
 set(CMAKE_CXX_COMPILER x86_64-w64-mingw32-g++)
 set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
+include(CMakePrintHelpers)
 
 project("bware")
 
 set(BWARE_TESTING ON)
+set(BWARE_DEBUG_TOOLS ON)
 
 # =================================== BRAINWARE STATIC LIBRARY ====================================
 
-add_library(${PROJECT_NAME} STATIC
+message("-- Setup Brainware static library compilation settings")
 
-  ${PROJECT_SOURCE_DIR}/src/core.cpp
-  ${PROJECT_SOURCE_DIR}/src/resources/shader.cpp
-  ${PROJECT_SOURCE_DIR}/src/resources/mesh.cpp
+file(GLOB_RECURSE BWARE_SOURCES
+    ${PROJECT_SOURCE_DIR}/src/*.cpp
+    ${PROJECT_SOURCE_DIR}/src/*.c
+)
 
-  # Dear ImGui
-  ${PROJECT_SOURCE_DIR}/src/imgui/imgui.cpp
-  ${PROJECT_SOURCE_DIR}/src/imgui/imgui_demo.cpp
-  ${PROJECT_SOURCE_DIR}/src/imgui/imgui_draw.cpp
-  ${PROJECT_SOURCE_DIR}/src/imgui/imgui_impl_glfw.cpp
-  ${PROJECT_SOURCE_DIR}/src/imgui/imgui_impl_opengl3.cpp
-  ${PROJECT_SOURCE_DIR}/src/imgui/imgui_tables.cpp
-  ${PROJECT_SOURCE_DIR}/src/imgui/imgui_widgets.cpp
+# REMOVE DEBUG TOOLS IF SET TO OFF
+if (NOT BWARE_DEBUG_TOOLS)
 
-  ${PROJECT_SOURCE_DIR}/src/glad.c
+  file(GLOB_RECURSE EXCLUDE_SOURCES
+    ${PROJECT_SOURCE_DIR}/src/debug/*.cpp
+    ${PROJECT_SOURCE_DIR}/src/debug/*.c
+  )
+
+  foreach(EXCLUDE_FILE ${EXCLUDE_SOURCES})
+    list(REMOVE_ITEM BWARE_SOURCES ${EXCLUDE_FILE})
+  endforeach()
+
+endif()
+
+add_library(${PROJECT_NAME} STATIC ${BWARE_SOURCES})
+
+file(GLOB_RECURSE BWARE_LIBRARIES
+    ${PROJECT_SOURCE_DIR}/lib/*.a
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC
 
   ${PROJECT_SOURCE_DIR}/include/
-  ${PROJECT_SOURCE_DIR}/include/imgui/
+  ${PROJECT_SOURCE_DIR}/include/imgui/ # ImGui compatibility
 
 )
 
-target_link_libraries(${PROJECT_NAME}
-
-  ${PROJECT_SOURCE_DIR}/lib/libglfw3.a
-  ${PROJECT_SOURCE_DIR}/lib/libassimp.a
-
-)
+target_link_libraries(${PROJECT_NAME} ${BWARE_LIBRARIES})
 
 # ======================================= BRAINWARE TESTING =======================================
 
 if (BWARE_TESTING)
 
-add_executable(test${PROJECT_NAME}
+message("-- Setup Brainware testing unit compilation settings")
 
-  ${PROJECT_SOURCE_DIR}/src/testing/main.cpp
-
+file(GLOB_RECURSE BWARE_TESTING_SOURCES
+  ${PROJECT_SOURCE_DIR}/test/*.cpp
+  ${PROJECT_SOURCE_DIR}/test/*.c
 )
 
-target_include_directories(test${PROJECT_NAME} PUBLIC
+add_executable(test${PROJECT_NAME} ${BWARE_TESTING_SOURCES})
 
-  ${PROJECT_SOURCE_DIR}/include/
-
-)
+target_include_directories(test${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/include/)
 
 target_link_libraries(test${PROJECT_NAME}
 
-  ${PROJECT_SOURCE_DIR}/lib/libglfw3.a
+  ${PROJECT_SOURCE_DIR}/lib/libglfw3.a # TODO: Remove after having engine be able to control OpenGL all by itself
   ${PROJECT_SOURCE_DIR}/build/libbware.a
 
 )
