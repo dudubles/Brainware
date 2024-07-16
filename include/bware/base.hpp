@@ -1,6 +1,6 @@
 // Copyright (c) 2024 dudubles
 
-// Title  : core.hpp
+// Title  : base.hpp
 // Author : @Dudubles
 // Date   : 07/15/24
 
