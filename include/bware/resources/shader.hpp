@@ -7,7 +7,7 @@
 #ifndef BWARE_RESOURCES_SHADER_H_
 #define BWARE_RESOURCES_SHADER_H_
 
-#include "bware/core.hpp"
+#include <bware/core.hpp>
 
 namespace brainware {
 

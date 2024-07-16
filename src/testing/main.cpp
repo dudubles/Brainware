@@ -1,11 +1,15 @@
-#include "bware/core.hpp"
-#include "bware/resources/shader.hpp"
+// This file is just for testing
+
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
+#include <glm/glm.hpp>
 #include <imgui/imgui.h>
 #include <imgui/imgui_impl_glfw.h>
 #include <imgui/imgui_impl_opengl3.h>
+
+#include <bware/resources/shader.hpp>
+
 #include <iostream>
 
 int main() {
