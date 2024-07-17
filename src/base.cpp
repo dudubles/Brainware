@@ -10,12 +10,11 @@
 
 namespace brainware {
 
+// Initialize resource list, this is to keep track
+// of every resource loaded into the game.
 std::vector<Resource *> Resource::resource_list_;
 
-Resource::Resource() {
-  type_ = ResourceType::kCustomResource; // Custom by default
-  resource_list_.push_back(this);
-}
+Resource::Resource() { resource_list_.push_back(this); }
 
 Resource::~Resource() {
 

@@ -1,5 +1,7 @@
 // This file is just for testing
 
+#include "bware/base.hpp"
+#include "bware/core/model.hpp"
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
@@ -45,8 +47,11 @@ int main() {
       "C:/Users/tiago/Desktop/Brainware/resource/shaders/vertex.glsl",
       "C:/Users/tiago/Desktop/Brainware/resource/shaders/fragment.glsl");
 
+  brainware::Model mymodel;
+  mymodel.FromFile("some path");
+
   while (!glfwWindowShouldClose(window)) {
-    glClearColor(0.0, 0.0, 0.0, 0.0);
+    glClearColor(0.0, .0, 0.0, 0.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     ImGui_ImplOpenGL3_NewFrame();

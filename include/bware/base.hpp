@@ -22,7 +22,7 @@ public:
   Resource();
   ~Resource();
 
-  ResourceType type_;
+  ResourceType type_ = kCustomResource;
 
 private:
   static std::vector<Resource *> resource_list_;
@@ -34,23 +34,25 @@ enum ComponentType {
 
 class Component {
 public:
-  ComponentType type_;
+  ComponentType type_ = kCustomComponent;
 };
 
 enum GameObjectType {
   kCustomGameObject,
+  kModel, // core/model.hpp
 };
 
 class GameObject {
 public:
-  GameObjectType type_;
+  GameObjectType type_ = kCustomGameObject;
 
   GameObject *parent_;
 
   std::vector<GameObject *> children_;
-  std::vector<Component *> components_;
 
-  virtual void Update();
+  std::vector<Component *> components_; // Not really needed (at least for now)
+
+  virtual void Update() {};
 };
 
 } // namespace brainware

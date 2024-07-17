@@ -7,12 +7,12 @@
 #ifndef BWARE_RESOURCES_MESH_H_
 #define BWARE_RESOURCES_MESH_H_
 
-#include "glm/ext/vector_float3.hpp"
+#include <glm/ext/vector_float3.hpp>
 #include <glm/glm.hpp>
 
-#include <bware/base.hpp>
-
 #include <vector>
+
+#include <bware/base.hpp>
 
 namespace brainware {
 

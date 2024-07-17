@@ -4,7 +4,6 @@
 // Author : @Dudubles
 // Date   : 07/15/24
 
-#include <cstddef>
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
@@ -12,6 +11,8 @@
 #include <assimp/Importer.hpp>
 #include <assimp/postprocess.h>
 #include <assimp/scene.h>
+
+#include <cstddef>
 
 #include <bware/base.hpp>
 #include <bware/resources/mesh.hpp>
