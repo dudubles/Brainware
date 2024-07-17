@@ -4,9 +4,6 @@
 // Author : @Dudubles
 // Date   : 07/16/24
 
-#include <assimp/Importer.hpp>
-#include <assimp/postprocess.h>
-#include <assimp/scene.h>
 #include <bware/base.hpp>
 #include <bware/resources/mesh.hpp>
 
