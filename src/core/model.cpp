@@ -4,12 +4,11 @@
 // Author : @Dudubles
 // Date   : 07/16/24
 
-#include <bware/base.hpp>
-#include <bware/resources/mesh.hpp>
-
 #include <iostream>
 
+#include <bware/base.hpp>
 #include <bware/core/model.hpp>
+#include <bware/resources/mesh.hpp>
 
 namespace brainware {
 

@@ -48,7 +48,8 @@ int main() {
       "C:/Users/tiago/Desktop/Brainware/resource/shaders/fragment.glsl");
 
   brainware::Model mymodel;
-  mymodel.FromFile("some path");
+  mymodel.FromFile(
+      "C:/Users/tiago/Desktop/Brainware/resource/assets/sample.fbx");
 
   while (!glfwWindowShouldClose(window)) {
     glClearColor(0.0, .0, 0.0, 0.0);
