@@ -97,6 +97,7 @@ int main() {
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
     if (loaded) {
+      glUseProgram(myshader.id_);
       mymodel.meshes_[0].Draw();
     }
 

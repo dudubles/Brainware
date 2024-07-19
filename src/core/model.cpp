@@ -44,9 +44,8 @@ Mesh LoadMeshGLTF(tinygltf::Model *model, tinygltf::Mesh *mesh) {
       tinygltf::BufferView buffer_view =
           model->bufferViews[accessor.bufferView];
 
-      glBindBuffer(buffer_view.target, result_primitive.vbo_);
-
       if (!vbo_defined) {
+        glBindBuffer(buffer_view.target, result_primitive.vbo_);
         tinygltf::Buffer buffer = model->buffers[buffer_view.buffer];
 
         glBufferData(buffer_view.target, buffer_view.byteLength,
@@ -98,7 +97,22 @@ void Model::FromFile(const char *path) {
   std::string err;
   std::string warn;
 
-  bool ret = loader.LoadASCIIFromFile(&model, &err, &warn, path);
+  bool success = loader.LoadASCIIFromFile(&model, &err, &warn, path);
+
+  if (!warn.empty()) {
+    std::cout << "[BRAINWARE] [WARN] " << warn << std::endl;
+  }
+
+  if (!err.empty()) {
+    std::cout << "[BRAINWARE] [ERROR] Error trying to load model: " << err
+              << std::endl;
+    return;
+  }
+
+  if (!success) {
+    printf("Failed to parse glTF\n");
+    return;
+  }
 
   for (tinygltf::Mesh mesh : model.meshes) {
     meshes_.push_back(LoadMeshGLTF(&model, &mesh));

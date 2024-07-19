@@ -21,8 +21,6 @@ Primitive::Primitive() {
 }
 
 void Primitive::Draw() {
-  std::cout << "primitive_draw_call\n";
-
   glBindVertexArray(vao_);
 
   glDrawElements(mode_, indices_count_, type_,
