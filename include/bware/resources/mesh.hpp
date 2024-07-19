@@ -20,11 +20,6 @@
 
 namespace brainware {
 
-struct Vertex {
-  glm::vec3 position_;
-  // glm::vec2 tex_coords_;
-};
-
 class Primitive {
 public:
   Primitive();

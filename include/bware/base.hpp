@@ -30,6 +30,7 @@ private:
 
 enum ComponentType {
   kCustomComponent,
+  kTransform,
 };
 
 class Component {

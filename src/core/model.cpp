@@ -25,9 +25,6 @@ namespace brainware {
 Model::Model() { type_ = kModel; }
 
 Mesh LoadMeshGLTF(tinygltf::Model *model, tinygltf::Mesh *mesh) {
-  // HACK: Kinda hacky since we are copying the values already existent of the
-  // primitives into a new vector.
-
   Mesh result_mesh;
 
   for (tinygltf::Primitive primitive : mesh->primitives) {
@@ -88,6 +85,7 @@ Mesh LoadMeshGLTF(tinygltf::Model *model, tinygltf::Mesh *mesh) {
 
   return result_mesh;
 }
+
 void Model::FromFile(const char *path) {
   std::cout << "[BRAINWARE] [DEBUG] Loading 3D model from path: " << path
             << std::endl;
