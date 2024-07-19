@@ -4,45 +4,37 @@
 // Author : @Dudubles
 // Date   : 07/15/24
 
+#include <iostream>
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
-
-#include <cstddef>
 
 #include <bware/base.hpp>
 #include <bware/resources/mesh.hpp>
 
 namespace brainware {
 
-Mesh::Mesh() { type_ = ResourceType::kMeshResource; }
-
-void Mesh::SetupGL() {
+Primitive::Primitive() {
   glGenVertexArrays(1, &vao_);
   glGenBuffers(1, &vbo_);
   glGenBuffers(1, &ebo_);
+}
+
+void Primitive::Draw() {
+  std::cout << "primitive_draw_call\n";
 
   glBindVertexArray(vao_);
 
-  glBindBuffer(GL_ARRAY_BUFFER, vbo_);
-  glBufferData(GL_ARRAY_BUFFER, vertices_.size() * sizeof(Vertex),
-               &vertices_[0], GL_STATIC_DRAW);
+  glDrawElements(mode_, indices_count_, type_,
+                 pointer_); // TODO: Implement mode_
+}
 
-  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo_);
-  glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices_.size() * sizeof(unsigned int),
-               &indices_[0], GL_STATIC_DRAW);
+Mesh::Mesh() { type_ = ResourceType::kMeshResource; }
 
-  // vertex (0) -> positions
-  glEnableVertexAttribArray(0);
-  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex),
-                        (void *)offsetof(Vertex, position_));
-
-  // vertex (1) -> texture coords
-  glEnableVertexAttribArray(1);
-  glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex),
-                        (void *)offsetof(Vertex, tex_coords_));
-
-  glBindVertexArray(0);
+void Mesh::Draw() {
+  for (Primitive primitive : primitives_) {
+    primitive.Draw();
+  }
 }
 
 } // namespace brainware

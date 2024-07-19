@@ -7,6 +7,10 @@
 #ifndef BWARE_RESOURCES_MESH_H_
 #define BWARE_RESOURCES_MESH_H_
 
+#define GLFW_INCLUDE_NONE
+#include <GLFW/glfw3.h>
+#include <glad/glad.h>
+
 #include <glm/ext/vector_float3.hpp>
 #include <glm/glm.hpp>
 
@@ -18,23 +22,32 @@ namespace brainware {
 
 struct Vertex {
   glm::vec3 position_;
-  glm::vec2 tex_coords_;
+  // glm::vec2 tex_coords_;
+};
+
+class Primitive {
+public:
+  Primitive();
+
+  GLenum mode_;
+  unsigned int type_;
+  size_t indices_count_;
+  char *pointer_;
+
+  unsigned int vao_;
+  unsigned int vbo_;
+  unsigned int ebo_;
+
+  void Draw();
 };
 
 class Mesh : Resource {
 public:
   Mesh();
 
-  unsigned int vao_;
+  std::vector<Primitive> primitives_;
 
-  std::vector<Vertex> vertices_;
-  std::vector<unsigned int> indices_;
-
-  void SetupGL();
-
-private:
-  unsigned int vbo_;
-  unsigned int ebo_;
+  void Draw();
 };
 
 } // namespace brainware
