@@ -41,7 +41,8 @@ public:
 
 enum GameObjectType {
   kCustomGameObject,
-  kModel, // core/model.hpp
+  kModel,  // core/model.hpp
+  kCamera, // core/camera.hpp
 };
 
 class GameObject {
