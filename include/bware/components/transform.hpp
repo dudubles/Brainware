@@ -18,9 +18,9 @@ class Transform : public Component {
 public:
   Transform();
 
-  float position_[3];
-  float rotation_[3];
-  float scaling_[3];
+  float position_[3] = {1.0f, 1.0f, 1.0f};
+  float rotation_[3] = {1.0f, 1.0f, 1.0f};
+  float scaling_[3] = {1.0f, 1.0f, 1.0f};
 
   glm::mat4 GetModelMatrix();
 };
