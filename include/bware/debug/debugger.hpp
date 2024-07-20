@@ -15,6 +15,7 @@
 namespace debugger {
 
 void InitializeDebugTools(GLFWwindow *window);
+void SetupBrainwareStyle();
 void StartFrame();
 void EndFrame();
 
