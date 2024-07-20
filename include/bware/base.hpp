@@ -7,6 +7,7 @@
 #ifndef BWARE_CORE_H_
 #define BWARE_CORE_H_
 
+#include <string>
 #include <vector>
 
 namespace brainware {
@@ -46,6 +47,7 @@ enum GameObjectType {
 class GameObject {
 public:
   GameObjectType type_ = kCustomGameObject;
+  std::string name_ = "GameObject";
 
   GameObject *parent_;
 

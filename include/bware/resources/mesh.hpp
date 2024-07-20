@@ -36,7 +36,7 @@ public:
   void Draw();
 };
 
-class Mesh : Resource {
+class Mesh : public Resource {
 public:
   Mesh();
 

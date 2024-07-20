@@ -9,28 +9,18 @@
 
 #include <glm/glm.hpp>
 
-#include <vector>
-
 #include <bware/base.hpp>
 #include <bware/resources/mesh.hpp>
 
 namespace brainware {
 
-struct Vector3 {
-  // Not following UNDERSCORE guideline
-
-  float x;
-  float y;
-  float z;
-};
-
-class Transform : Component {
+class Transform : public Component {
 public:
   Transform();
 
-  Vector3 position_;
-  Vector3 rotation_;
-  Vector3 scaling_;
+  float position_[3];
+  float rotation_[3];
+  float scaling_[3];
 
   glm::mat4 GetModelMatrix();
 };

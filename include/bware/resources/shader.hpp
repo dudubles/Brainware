@@ -11,7 +11,7 @@
 
 namespace brainware {
 
-class Shader : Resource {
+class Shader : public Resource {
 public:
   Shader(const char *vertex_path, const char *fragment_path);
 

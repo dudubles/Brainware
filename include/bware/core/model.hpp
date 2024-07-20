@@ -12,13 +12,16 @@
 #include <vector>
 
 #include <bware/base.hpp>
+#include <bware/components/transform.hpp>
 #include <bware/resources/mesh.hpp>
 
 namespace brainware {
 
-class Model : GameObject {
+class Model : public GameObject {
 public:
   Model();
+
+  Transform transform_;
 
   std::vector<Mesh> meshes_;
 
