@@ -1,6 +1,7 @@
 // This file is just for testing
 
 #include "bware/base.hpp"
+#include "bware/core/camera.hpp"
 #include "bware/core/model.hpp"
 #include "bware/debug/debugger.hpp"
 #include "bware/debug/inspector.hpp"
@@ -44,16 +45,27 @@ int main() {
       "C:/Users/tiago/Desktop/Brainware/resource/shaders/fragment.glsl");
 
   brainware::Model mymodel;
+  mymodel.FromFile(
+      "C:/Users/tiago/Desktop/Brainware/resource/assets/sample.gltf");
+  brainware::Camera mycamera;
   debugger::Inspector inspector;
-  bool loaded;
 
+  myshader.Bind();
   while (!glfwWindowShouldClose(window)) {
     glClearColor(0.0, .0, 0.0, 0.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     debugger::StartFrame();
 
-    inspector.Begin((brainware::GameObject)mymodel);
+    inspector.Begin(&mymodel);
+
+    glm::mat4 model = mymodel.transform_.GetMatrix();
+    glm::mat4 view = mycamera.transform_.GetMatrix();
+    glm::mat4 proj = mycamera.GetProjectionMatrix();
+
+    myshader.UploadMvp(model, view, proj);
+
+    mymodel.meshes_[0].Draw();
 
     debugger::EndFrame();
 

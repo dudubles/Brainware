@@ -4,6 +4,8 @@
 // Author : @Dudubles
 // Date   : 07/15/24
 
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 #include <glad/glad.h>
@@ -16,6 +18,19 @@
 #include <bware/resources/shader.hpp>
 
 namespace brainware {
+
+void Shader::UploadMvp(glm::mat4 model, glm::mat4 view, glm::mat4 projection) {
+  int uniform_location = glGetUniformLocation(id_, "mvp");
+
+  if (uniform_location < 0) {
+    return;
+  }
+
+  glm::mat4 result = projection * view * model;
+  glUniformMatrix4fv(uniform_location, 1, GL_FALSE, glm::value_ptr(result));
+}
+
+void Shader::Bind() { glUseProgram(id_); }
 
 Shader::Shader(const char *vertex_path, const char *fragment_path) {
   type_ = ResourceType::kShaderResource;

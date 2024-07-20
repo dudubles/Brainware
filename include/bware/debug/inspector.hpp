@@ -16,7 +16,7 @@ namespace debugger {
 
 class Inspector {
 public:
-  void Begin(brainware::GameObject object);
+  void Begin(brainware::GameObject *object);
 };
 
 } // namespace debugger
