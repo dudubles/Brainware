@@ -4,6 +4,7 @@
 #include "bware/core/model.hpp"
 #include "bware/debug/debugger.hpp"
 #include "bware/debug/inspector.hpp"
+#include "bware/resources/mesh.hpp"
 #include <windows.h>
 
 #define GLFW_INCLUDE_NONE
@@ -57,13 +58,16 @@ int main() {
     glClearColor(0.0, .0, 0.0, 0.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    glm::mat4 model = mymodel.transform_.GetMatrix();
-    glm::mat4 view = mycamera.transform_.GetMatrix();
+    mymodel.transform_.UpdateMatrix();
+    mycamera.transform_.UpdateMatrix();
     glm::mat4 proj = mycamera.GetProjectionMatrix();
 
-    myshader.UploadMvp(model, view, proj);
+    myshader.UploadMvp(mymodel.transform_.matrix_, mycamera.transform_.matrix_,
+                       proj);
 
-    mymodel.meshes_[0].Draw();
+    for (brainware::Mesh mesh : mymodel.meshes_) {
+      mesh.Draw();
+    }
 
     debugger::RenderTools();
 

@@ -54,9 +54,12 @@ void Inspector::Render() {
                          glm::value_ptr(model_cast->transform_.position_));
       ImGui::SliderFloat3("Rotation",
                           glm::value_ptr(model_cast->transform_.rotation_),
-                          0.0f, 360.0f);
+                          -180.0f, 180.0f);
       ImGui::InputFloat3("Scale",
                          glm::value_ptr(model_cast->transform_.scaling_));
+
+      ImGui::InputFloat3("Pivot",
+                         glm::value_ptr(model_cast->transform_.pivot_));
     }
   }
 
@@ -68,7 +71,7 @@ void Inspector::Render() {
                          glm::value_ptr(camera_cast->transform_.position_));
       ImGui::SliderFloat3("Rotation",
                           glm::value_ptr(camera_cast->transform_.rotation_),
-                          0.0f, 360.0f);
+                          -180.0f, 180.0f);
       ImGui::InputFloat3("Scale",
                          glm::value_ptr(camera_cast->transform_.scaling_));
     }

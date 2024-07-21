@@ -5,6 +5,7 @@
 // Date   : 07/15/24
 
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/quaternion.hpp>
 #include <iostream>
 
 #define GLFW_INCLUDE_NONE
@@ -19,21 +20,24 @@ namespace brainware {
 
 Transform::Transform() { type_ = kTransform; }
 
-glm::mat4 Transform::GetMatrix() {
-  glm::mat4 result = glm::mat4(1.0f);
+void Transform::UpdateMatrix() {
+  matrix_ = glm::mat4(1.0f);
 
-  result = glm::translate(result, position_);
+  // Scale
+  matrix_ = glm::scale(matrix_, scaling_);
 
-  result =
-      glm::rotate(result, glm::radians(rotation_[0]), glm::vec3(1, 0, 0)); // X
-  result =
-      glm::rotate(result, glm::radians(rotation_[1]), glm::vec3(0, 1, 0)); // Y
-  result =
-      glm::rotate(result, glm::radians(rotation_[2]), glm::vec3(0, 0, 1)); // Z
+  // Rotation
+  matrix_ = glm::translate(matrix_, pivot_);
+  matrix_ = glm::rotate(matrix_, glm::radians(rotation_.y),
+                        glm::vec3(0.0f, 1.0f, 0.0f));
+  matrix_ = glm::rotate(matrix_, glm::radians(rotation_.x),
+                        glm::vec3(1.0f, 0.0f, 0.0f));
+  matrix_ = glm::rotate(matrix_, glm::radians(rotation_.z),
+                        glm::vec3(0.0f, 0.0f, 1.0f));
+  matrix_ = glm::translate(matrix_, -pivot_);
 
-  result = glm::scale(result, scaling_);
-
-  return result;
+  // Position
+  matrix_ = glm::translate(matrix_, position_);
 }
 
 } // namespace brainware

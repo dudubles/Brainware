@@ -18,11 +18,14 @@ class Transform : public Component {
 public:
   Transform();
 
+  glm::vec3 pivot_ = {1.0f, 1.0f, 1.0f};
   glm::vec3 position_ = {1.0f, 1.0f, 1.0f};
   glm::vec3 rotation_ = {1.0f, 1.0f, 1.0f};
   glm::vec3 scaling_ = {1.0f, 1.0f, 1.0f};
 
-  glm::mat4 GetMatrix();
+  glm::mat4 matrix_;
+
+  void UpdateMatrix();
 };
 
 } // namespace brainware
