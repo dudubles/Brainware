@@ -41,8 +41,9 @@ void Inspector::Begin(brainware::GameObject *object) {
     if (ImGui::CollapsingHeader("Transform")) {
       ImGui::InputFloat3("Position",
                          glm::value_ptr(model_cast->transform_.position_));
-      ImGui::InputFloat3("Rotation",
-                         glm::value_ptr(model_cast->transform_.rotation_));
+      ImGui::SliderFloat3("Rotation",
+                          glm::value_ptr(model_cast->transform_.rotation_),
+                          0.0f, 360.0f);
       ImGui::InputFloat3("Scale",
                          glm::value_ptr(model_cast->transform_.scaling_));
     }
