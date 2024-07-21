@@ -4,6 +4,7 @@
 // Author : @Dudubles
 // Date   : 07/19/24
 
+#include <algorithm>
 #define GLFW_INCLUDE_NONE
 #include <GLFW/glfw3.h>
 
@@ -15,25 +16,24 @@
 
 namespace debugger {
 
-void InitializeDebugTools(GLFWwindow *window) {
-  IMGUI_CHECKVERSION();
-  ImGui::CreateContext();
-  ImGuiIO &io = ImGui::GetIO();
-  (void)io;
-  SetupBrainwareStyle();
-  ImGui_ImplGlfw_InitForOpenGL(window, true);
-  ImGui_ImplOpenGL3_Init("#version 460");
+// Initialize tool list, this done to keep track
+// of every opened debug tool
+std::vector<DebugTool *> DebugTool::tools_list_;
+
+DebugTool::DebugTool() { tools_list_.push_back(this); }
+
+DebugTool::~DebugTool() {
+  auto tool_pos = std::find(tools_list_.begin(), tools_list_.end(), this);
+
+  if (tool_pos != tools_list_.end()) {
+    tools_list_.erase(tool_pos);
+  }
 }
 
-void StartFrame() {
-  ImGui_ImplOpenGL3_NewFrame();
-  ImGui_ImplGlfw_NewFrame();
-  ImGui::NewFrame();
-}
-
-void EndFrame() {
-  ImGui::Render();
-  ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+void DebugTool::RenderAll() {
+  for (DebugTool *tool : tools_list_) {
+    tool->Render();
+  }
 }
 
 void SetupBrainwareStyle() {
@@ -194,6 +194,27 @@ void SetupBrainwareStyle() {
   style.Colors[ImGuiCol_ModalWindowDimBg] =
       ImVec4(0.2000000029802322f, 0.2000000029802322f, 0.2000000029802322f,
              0.3499999940395355f);
+}
+
+void InitializeDebugTools(GLFWwindow *window) {
+  IMGUI_CHECKVERSION();
+  ImGui::CreateContext();
+  ImGuiIO &io = ImGui::GetIO();
+  (void)io;
+  SetupBrainwareStyle();
+  ImGui_ImplGlfw_InitForOpenGL(window, true);
+  ImGui_ImplOpenGL3_Init("#version 460");
+}
+
+void RenderTools() {
+  ImGui_ImplOpenGL3_NewFrame();
+  ImGui_ImplGlfw_NewFrame();
+  ImGui::NewFrame();
+
+  DebugTool::RenderAll();
+
+  ImGui::Render();
+  ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 }
 
 } // namespace debugger

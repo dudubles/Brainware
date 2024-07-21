@@ -1,6 +1,5 @@
 // This file is just for testing
 
-#include "bware/base.hpp"
 #include "bware/core/camera.hpp"
 #include "bware/core/model.hpp"
 #include "bware/debug/debugger.hpp"
@@ -49,15 +48,14 @@ int main() {
       "C:/Users/tiago/Desktop/Brainware/resource/assets/sample.gltf");
   brainware::Camera mycamera;
   debugger::Inspector inspector;
+  debugger::Inspector inspector2;
+  inspector.object_ = &mymodel;
+  inspector2.object_ = &mycamera;
 
   myshader.Bind();
   while (!glfwWindowShouldClose(window)) {
     glClearColor(0.0, .0, 0.0, 0.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-    debugger::StartFrame();
-
-    inspector.Begin(&mymodel);
 
     glm::mat4 model = mymodel.transform_.GetMatrix();
     glm::mat4 view = mycamera.transform_.GetMatrix();
@@ -67,7 +65,7 @@ int main() {
 
     mymodel.meshes_[0].Draw();
 
-    debugger::EndFrame();
+    debugger::RenderTools();
 
     glfwSwapBuffers(window);
     glfwPollEvents();

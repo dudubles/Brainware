@@ -26,4 +26,10 @@ Resource::~Resource() {
   }
 }
 
+int GameObject::id_increment = 0;
+GameObject::GameObject() {
+  id_increment++;
+  id_ = id_increment;
+}
+
 } // namespace brainware

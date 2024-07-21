@@ -47,8 +47,12 @@ enum GameObjectType {
 
 class GameObject {
 public:
+  GameObject();
+
   GameObjectType type_ = kCustomGameObject;
   std::string name_ = "GameObject";
+
+  int id_;
 
   GameObject *parent_;
 
@@ -57,6 +61,9 @@ public:
   std::vector<Component *> components_; // Not really needed (at least for now)
 
   virtual void Update() {};
+
+private:
+  static int id_increment;
 };
 
 } // namespace brainware

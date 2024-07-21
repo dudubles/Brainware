@@ -15,9 +15,20 @@
 namespace debugger {
 
 void InitializeDebugTools(GLFWwindow *window);
-void SetupBrainwareStyle();
-void StartFrame();
-void EndFrame();
+void RenderTools();
+
+class DebugTool {
+public:
+  DebugTool();
+  ~DebugTool();
+
+  static void RenderAll();
+
+  virtual void Render() {};
+
+private:
+  static std::vector<DebugTool *> tools_list_;
+};
 
 } // namespace debugger
 

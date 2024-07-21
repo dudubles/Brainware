@@ -7,16 +7,17 @@
 #ifndef BWARE_DEBUG_MODEL_INSPECTOR_H_
 #define BWARE_DEBUG_MODEL_INSPECTOR_H_
 
-#include <bware/core/model.hpp>
-
 #include <bware/base.hpp>
+#include <bware/core/model.hpp>
+#include <bware/debug/debugger.hpp>
 #include <bware/resources/mesh.hpp>
 
 namespace debugger {
 
-class Inspector {
+class Inspector : public DebugTool {
 public:
-  void Begin(brainware::GameObject *object);
+  void Render() override;
+  brainware::GameObject *object_;
 };
 
 } // namespace debugger

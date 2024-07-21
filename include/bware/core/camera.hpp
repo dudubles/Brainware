@@ -19,7 +19,7 @@ enum ProjectionType {
   kPerspective,
 };
 
-class Camera : GameObject {
+class Camera : public GameObject {
 public:
   Camera();
 
@@ -27,8 +27,8 @@ public:
 
   ProjectionType projection_ = kPerspective;
   float fov_ = 45.0f;
-  float aspect_width = 1280.0f;
-  float aspect_height = 720.0f;
+  float aspect_width_ = 1280.0f;
+  float aspect_height_ = 720.0f;
 
   glm::mat4 GetProjectionMatrix();
 };

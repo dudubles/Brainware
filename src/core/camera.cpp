@@ -19,7 +19,8 @@ Camera::Camera() { type_ = kCamera; }
 glm::mat4 Camera::GetProjectionMatrix() {
   glm::mat4 result;
   if (projection_ == kPerspective) {
-    result = glm::perspective(fov_, aspect_width / aspect_height, 0.1f, 100.0f);
+    result = glm::perspective(glm::radians(fov_),
+                              aspect_width_ / aspect_height_, 0.1f, 100.0f);
   }
 
   return result;
