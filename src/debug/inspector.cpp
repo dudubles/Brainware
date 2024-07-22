@@ -52,8 +52,8 @@ void Inspector::Render() {
     if (ImGui::CollapsingHeader("Transform")) {
       ImGui::InputFloat3("Position",
                          glm::value_ptr(model_cast->transform_.position_));
-      ImGui::SliderFloat3("Rotation",
-                          glm::value_ptr(model_cast->transform_.rotation_),
+      ImGui::SliderFloat3("Orientation",
+                          glm::value_ptr(model_cast->transform_.orientation_),
                           -180.0f, 180.0f);
       ImGui::InputFloat3("Scale",
                          glm::value_ptr(model_cast->transform_.scaling_));
@@ -69,8 +69,8 @@ void Inspector::Render() {
     if (ImGui::CollapsingHeader("Transform")) {
       ImGui::InputFloat3("Position",
                          glm::value_ptr(camera_cast->transform_.position_));
-      ImGui::SliderFloat3("Rotation",
-                          glm::value_ptr(camera_cast->transform_.rotation_),
+      ImGui::SliderFloat3("Orientation",
+                          glm::value_ptr(camera_cast->transform_.orientation_),
                           -180.0f, 180.0f);
       ImGui::InputFloat3("Scale",
                          glm::value_ptr(camera_cast->transform_.scaling_));
