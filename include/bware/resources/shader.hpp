@@ -20,6 +20,7 @@ public:
   void Bind();
   void UploadMvp(glm::mat4 model, glm::mat4 view, glm::mat4 projection);
 
+private:
   unsigned int id_;
 };
 

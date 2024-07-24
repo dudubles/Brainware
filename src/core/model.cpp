@@ -62,6 +62,14 @@ Mesh LoadMeshGLTF(tinygltf::Model *model, tinygltf::Mesh *mesh) {
                               accessor.normalized ? GL_TRUE : GL_FALSE,
                               byte_stride, (char *)NULL + accessor.byteOffset);
       }
+
+      if (attr_name.find("TEXCOORD_")) {
+        // LAYOUT 1 -> TEXTURE COORDINATES
+        glEnableVertexAttribArray(1);
+        glVertexAttribPointer(1, size, accessor.componentType,
+                              accessor.normalized ? GL_TRUE : GL_FALSE,
+                              byte_stride, (char *)NULL + accessor.byteOffset);
+      }
     }
 
     tinygltf::Accessor indices_accessor = model->accessors[primitive.indices];
