@@ -15,10 +15,14 @@ namespace brainware {
 
 class Texture : public Resource {
 public:
-  void Bind();
+  Texture();
+
+  void SetUnit(int unit);
+  void Activate();
 
 private:
   unsigned int id_;
+  unsigned int unit_;
 };
 
 } // namespace brainware
