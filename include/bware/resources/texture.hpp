@@ -15,8 +15,6 @@ namespace brainware {
 
 class Texture : public Resource {
 public:
-  unsigned int tex_coord_;
-
   void Bind();
 
 private:
